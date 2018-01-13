@@ -1,0 +1,29 @@
+---
+version: '2'
+
+services:
+  nginx:
+    image: nginx_limit
+    container_name: nginx_limit
+    hostname: "nginx"
+    build: "nginx/"
+    networks:
+      - link
+    ports:
+      - "8080:80"
+
+  ab1:
+    image: httpd:alpine
+    container_name: ab1
+    networks:
+      - link
+
+  ab2:
+    image: httpd:alpine
+    container_name: ab2
+    networks:
+      - link
+
+networks:
+  link:
+    driver: bridge
