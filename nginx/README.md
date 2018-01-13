@@ -59,7 +59,6 @@ http {
 + コンテナ起動
 
 ```:bash
-$  
 $ docker-compose up -d
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
@@ -117,47 +116,9 @@ $ docker exec -ti nginx_limit /bin/ash
 172.20.0.3 - - [13/Jan/2018:06:59:22 +0000] "GET / HTTP/1.0" 200 612 "-" "ApacheBench/2.3" "-"
 ```
 
-> ab1/ab2コンテナに入り(`docker exec`)、`ab`実行
-
-```:bash
-$ docker exec -ti ab1 /bin/ash
-/usr/local/apache2 # ab -n 10 -c 10 http://nginx/
-This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking nginx (be patient).....done
-
-
-Server Software:        nginx/1.13.1
-Server Hostname:        nginx
-Server Port:            80
-
-Document Path:          /
-Document Length:        612 bytes
-
-Concurrency Level:      1
-Time taken for tests:   0.000 seconds
-Complete requests:      1
-Failed requests:        0
-Total transferred:      845 bytes
-HTML transferred:       612 bytes
-Requests per second:    2785.52 [#/sec] (mean)
-Time per request:       0.359 [ms] (mean)
-Time per request:       0.359 [ms] (mean, across all concurrent requests)
-Transfer rate:          2298.59 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0    0   0.0      0       0
-Processing:     0    0   0.0      0       0
-Waiting:        0    0   0.0      0       0
-Total:          0    0   0.0      0       0
-```
-
 + 流量制限発動確認
 
-> 対象IPからの遅延実行対象外パスへのアクセスがエラーとなっていないことを確認
+> 対象IPからの遅延実行対象外パスへのアクセスがエラーとなっていないことを確認<br/>
 > 対象IPからの遅延実行対象パスへのアクセスがエラー(503)となっていることを確認
 
 ```:bash
@@ -259,7 +220,7 @@ Percentage of the requests served within a certain time (ms)
 
 + 流量制限対象外確認
 
-> 対象外IPからの遅延実行対象外パスへのアクセスがエラーとなっていないことを確認
+> 対象外IPからの遅延実行対象外パスへのアクセスがエラーとなっていないことを確認<br/>
 > 対象外IPからの遅延実行対象パスへのアクセスがエラーとなっていないことを確認
 
 ```:bash
