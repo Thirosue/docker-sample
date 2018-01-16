@@ -1,0 +1,36 @@
+---
+version: '2'
+
+services:
+  proxy:
+    image: proxy
+    container_name: proxy
+    hostname: "proxy"
+    build: "proxy/"
+    networks:
+      - link
+    ports:
+      - "8080:80"
+
+  web:
+    image: nginx:1.13.1-alpine
+    container_name: web
+    hostname: "web"
+    networks:
+      - link
+
+  ab1:
+    image: httpd:alpine
+    container_name: ab1
+    networks:
+      - link
+
+  ab2:
+    image: httpd:alpine
+    container_name: ab2
+    networks:
+      - link
+
+networks:
+  link:
+    driver: bridge
