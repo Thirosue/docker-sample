@@ -19,18 +19,6 @@ services:
     networks:
       - link
 
-  ab1:
-    image: httpd:alpine
-    container_name: ab1
-    networks:
-      - link
-
-  ab2:
-    image: httpd:alpine
-    container_name: ab2
-    networks:
-      - link
-
 networks:
   link:
     driver: bridge
